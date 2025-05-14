@@ -17,47 +17,61 @@ function TaskForm({ onTaskCreated }) {
                 {
                     title,
                     description,
-                    deadline: deadline || undefined // no enviar si está vacío
+                    deadline: deadline || undefined,
                 },
                 {
                     headers: {
-                        Authorization: `Bearer ${token}`
-                    }
+                        Authorization: `Bearer ${token}`,
+                    },
                 }
             );
 
-            onTaskCreated(res.data.task); // avisamos al padre
+            onTaskCreated(res.data.task);
             setTitle("");
             setDescription("");
             setDeadline("");
         } catch (err) {
             alert("Error al crear la tarea");
-            console.log(err);
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h3>Crear nueva tarea</h3>
-            <input
-                type="text"
-                placeholder="Título"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-            />
-            <input
-                type="text"
-                placeholder="Descripción (opcional)"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-            />
-            <input
-                type="date"
-                value={deadline}
-                onChange={(e) => setDeadline(e.target.value)}
-            />
-            <button type="submit">Agregar tarea</button>
+        <form onSubmit={handleSubmit} className="mb-4">
+            <h5 className="mb-3">Crear nueva tarea</h5>
+
+            <div className="mb-3">
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Título"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                />
+            </div>
+
+            <div className="mb-3">
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Descripción (opcional)"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                />
+            </div>
+
+            <div className="mb-3">
+                <input
+                    type="date"
+                    className="form-control"
+                    value={deadline}
+                    onChange={(e) => setDeadline(e.target.value)}
+                />
+            </div>
+
+            <button type="submit" className="btn btn-success">
+                Agregar tarea
+            </button>
         </form>
     );
 }
