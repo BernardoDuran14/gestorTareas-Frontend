@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# 💻 Frontend - Gestor de Tareas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este es el frontend del proyecto **Gestor de Tareas**, construido con **React** y **Bootstrap**. Permite al usuario registrarse, iniciar sesión y gestionar sus tareas a través de un tablero visual tipo Scrum.
 
-## Available Scripts
+## 🚀 Tecnologías utilizadas
+- React
+- React Router DOM
+- Context API (manejo global del token)
+- Axios (para llamadas a la API)
+- Bootstrap 5 (diseño responsive)
+- Vite (o Create React App si aplicaste otro método)
 
-In the project directory, you can run:
+## 📂 Estructura del proyecto
 
-### `npm start`
+frontend/
+├── pages/ → LoginPage, RegisterPage, DashboardPage
+├── components/ → TaskForm, TaskItem, etc.
+├── context/ → AuthContext.js (manejo global de sesión)
+├── App.js → Enrutamiento principal con React Router
+├── main.jsx → Punto de entrada de la app
+└── .env → Variables de entorno
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ▶️ Cómo ejecutar localmente
+1. Instala las dependencias:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+npm install
 
-### `npm test`
+## Ejecuta el proyecto:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm run dev
 
-### `npm run build`
+La app se abrirá automáticamente en tu navegador en http://localhost:5173 (puede variar según Vite).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🔐 Variables de entorno
+Crea un archivo .env en la raíz del frontend con:
+VITE_API_URL=http://localhost:3100
+## Y en tu código Axios usa:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+axios.get(`${import.meta.env.VITE_API_URL}/api/tasks`, {
+  headers: { Authorization: `Bearer ${token}` }
+});
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📌 Funcionalidades
 
-### `npm run eject`
+Registro e inicio de sesión con JWT
+Gestión de sesión con Context API
+Crear, editar, completar y eliminar tareas
+Filtros por título, estado y fecha límite
+Diseño responsive con Bootstrap
+Modo oscuro en toda la aplicación
+Tablero Scrum (3 columnas): Pendiente, En progreso, Completada
+Validación básica de formularios
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📡 Conexión con backend
+El frontend consume un backend que expone los siguientes endpoints:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+/api/auth/login
+/api/auth/register
+/api/auth/me
+/api/tasks
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 👨‍💻 Autor
+Proyecto desarrollado por Bernardo Duran.
