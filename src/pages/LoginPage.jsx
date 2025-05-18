@@ -20,13 +20,16 @@ function LoginPage() {
             alert("Login exitoso");
             navigate("/dashboard");
         } catch (err) {
-            console.error("Error:", err);
-            if (err.response) {
-                alert("Error del servidor: " + err.response.data.message);
+            console.error("💥 Error al hacer login:", err);
+
+            if (err.response?.data?.message) {
+                alert("Error en login: " + err.response.data.message);
+            } else if (err.response?.data?.errors) {
+                alert(err.response.data.errors.map(e => e.msg).join("\n"));
             } else if (err.request) {
-                alert("No se obtuvo respuesta del servidor (Render dormido o mal URL)");
+                alert("❌ No se obtuvo respuesta del servidor. ¿Render está despierto?");
             } else {
-                alert("Error en la conexión con el servidor");
+                alert("❌ Error inesperado al conectar con el servidor.");
             }
         }
     };
