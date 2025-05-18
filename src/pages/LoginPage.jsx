@@ -20,16 +20,16 @@ function LoginPage() {
             alert("Login exitoso");
             navigate("/dashboard");
         } catch (err) {
-            console.error("💥 Error al hacer login:", err);
+            console.error("Login error:", err);
 
             if (err.response?.data?.message) {
-                alert("Error en login: " + err.response.data.message);
+                alert("Error: " + err.response.data.message);
             } else if (err.response?.data?.errors) {
                 alert(err.response.data.errors.map(e => e.msg).join("\n"));
             } else if (err.request) {
-                alert("❌ No se obtuvo respuesta del servidor. ¿Render está despierto?");
+                alert("No hubo respuesta del backend. Verifica VITE_API_URL y si Render está activo.");
             } else {
-                alert("❌ Error inesperado al conectar con el servidor.");
+                alert("Error desconocido.");
             }
         }
     };
