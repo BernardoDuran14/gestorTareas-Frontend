@@ -20,7 +20,14 @@ function LoginPage() {
             alert("Login exitoso");
             navigate("/dashboard");
         } catch (err) {
-            alert("Error en login: " + err.response.data.message);
+            console.error("Error:", err);
+            if (err.response) {
+                alert("Error del servidor: " + err.response.data.message);
+            } else if (err.request) {
+                alert("No se obtuvo respuesta del servidor (Render dormido o mal URL)");
+            } else {
+                alert("Error en la conexión con el servidor");
+            }
         }
     };
 
