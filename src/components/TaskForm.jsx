@@ -11,8 +11,7 @@ function TaskForm({ onTaskCreated }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(
-                "http://localhost:3100/api/tasks",
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/tasks`,
                 {
                     title,
                     description,

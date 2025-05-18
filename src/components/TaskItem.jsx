@@ -14,7 +14,7 @@ function TaskItem({ task, onTaskUpdated, onTaskDeleted }) {
     const updateStatus = async (newStatus) => {
         try {
             const res = await axios.put(
-                `http://localhost:3100/api/tasks/${task._id}`,
+                `${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`,
                 { status: newStatus },
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -28,7 +28,7 @@ function TaskItem({ task, onTaskUpdated, onTaskDeleted }) {
 
     const deleteTask = async () => {
         try {
-            await axios.delete(`http://localhost:3100/api/tasks/${task._id}`, {
+            await axios.delete(`${import.meta.env.VITE_API_URL}api/tasks/${task._id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             onTaskDeleted(task._id);
@@ -41,7 +41,7 @@ function TaskItem({ task, onTaskUpdated, onTaskDeleted }) {
         e.preventDefault();
         try {
             const res = await axios.put(
-                `http://localhost:3100/api/tasks/${task._id}`,
+                `${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`,
                 {
                     title: editTitle,
                     description: editDescription,

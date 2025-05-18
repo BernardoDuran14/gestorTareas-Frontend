@@ -46,7 +46,7 @@ function DashboardPage() {
             if (updatedFilters.search) params.append("search", updatedFilters.search);
 
             const res = await axios.get(
-                `http://localhost:3100/api/tasks?${params.toString()}`,
+                `${import.meta.env.VITE_API_URL}/api/tasks?${params.toString()}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
