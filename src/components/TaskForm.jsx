@@ -10,7 +10,6 @@ function TaskForm({ onTaskCreated }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
             const res = await axios.post(
                 "http://localhost:3100/api/tasks",
@@ -36,42 +35,43 @@ function TaskForm({ onTaskCreated }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="mb-4">
-            <h5 className="mb-3">Crear nueva tarea</h5>
-
-            <div className="mb-3">
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Título"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    required
-                />
+        <form onSubmit={handleSubmit} className="bg-secondary p-3 rounded mb-4">
+            <h5 className="text-white">Crear Tarea</h5>
+            <div className="row g-2 align-items-end">
+                <div className="col-md-4">
+                    <label className="form-label text-light">Título</label>
+                    <input
+                        type="text"
+                        className="form-control bg-light text-dark border-dark"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="col-md-4">
+                    <label className="form-label text-light">Descripción</label>
+                    <input
+                        type="text"
+                        className="form-control bg-light text-dark border-dark"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                </div>
+                <div className="col-md-3">
+                    <label className="form-label text-light">Fecha límite</label>
+                    <input
+                        type="date"
+                        className="form-control bg-light text-dark border-dark"
+                        value={deadline}
+                        onChange={(e) => setDeadline(e.target.value)}
+                    />
+                </div>
+                <div className="col-md-1 d-grid">
+                    <button type="submit" className="btn btn-success mt-2">
+                        +
+                    </button>
+                </div>
             </div>
-
-            <div className="mb-3">
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Descripción (opcional)"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-            </div>
-
-            <div className="mb-3">
-                <input
-                    type="date"
-                    className="form-control"
-                    value={deadline}
-                    onChange={(e) => setDeadline(e.target.value)}
-                />
-            </div>
-
-            <button type="submit" className="btn btn-success">
-                Agregar tarea
-            </button>
         </form>
     );
 }
